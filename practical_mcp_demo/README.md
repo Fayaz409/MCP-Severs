@@ -38,18 +38,18 @@ pip install "mcp[cli]"
 mcp dev server/demo_server.py
 ```
 
-### 3. Run the Client Test Suite
+### 3. Run the Real MCP Protocol Client
 ```bash
-# Connection test (shows how to connect to server)
-python client/test_client.py
-
-# Direct functionality demo (shows all features working)
-python client/demo_client.py
-
-# Working MCP client examples
-python client/working_client.py
-python client/interactive_client.py
+# See actual JSON-RPC protocol communication in action
+python client/real_mcp_client.py
 ```
+
+This client shows you:
+- **Real JSON-RPC messages** being sent and received
+- **Actual protocol initialization** with server capabilities
+- **Live tool calling** with request/response pairs
+- **Resource reading** with full protocol flow
+- **Prompt generation** showing the complete communication
 
 ## 🔧 Server Features
 
