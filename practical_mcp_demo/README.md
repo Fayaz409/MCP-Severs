@@ -40,11 +40,15 @@ mcp dev server/demo_server.py
 
 ### 3. Run the Client Test Suite
 ```bash
-# Install additional dependencies for client
-pip install mcp
-
-# Run comprehensive tests
+# Connection test (shows how to connect to server)
 python client/test_client.py
+
+# Direct functionality demo (shows all features working)
+python client/demo_client.py
+
+# Working MCP client examples
+python client/working_client.py
+python client/interactive_client.py
 ```
 
 ## 🔧 Server Features
