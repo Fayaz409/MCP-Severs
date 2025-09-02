@@ -15,31 +15,52 @@ The Model Context Protocol (MCP) is an open standard that enables AI models to s
 
 ```
 MCP_Learn/
-├── main.py                 # Simple Python application entry point
+├── main.py                          # Simple Python application entry point
 ├── MCP_Servers/
-│   └── test.py            # MCP server implementation with examples
-├── pyproject.toml         # Project configuration and dependencies
-├── uv.lock               # Locked dependencies for reproducible builds
-├── .python-version       # Python version specification (3.13+)
-└── README.md             # This file
+│   └── test.py                     # Basic MCP server implementation with examples
+├── practical_mcp_demo/             # 🆕 Complete hands-on MCP demo
+│   ├── server/demo_server.py       #     Advanced MCP server with 4 tools, 2 resources, 2 prompts
+│   ├── client/test_client.py       #     Full test client demonstrating all features
+│   ├── run_demo.py                 #     Quick demo runner
+│   └── README.md                   #     Detailed practical guide
+├── pyproject.toml                  # Project configuration and dependencies
+├── uv.lock                         # Locked dependencies for reproducible builds
+├── .python-version                 # Python version specification (3.13+)
+├── CLAUDE.md                       # Claude Code guidance file
+└── README.md                       # This file
 ```
 
 ## 🛠 Features
 
-This MCP server implementation showcases three core MCP concepts:
+This project includes two MCP server implementations:
 
-### 1. **Tools** - Callable Functions
-- `add(a, b)`: Demonstrates basic arithmetic operations
-- Tools can be invoked by AI clients to perform computations
+### Basic Server (`MCP_Servers/test.py`)
+Demonstrates core MCP concepts:
+- **Tools**: `add(a, b)` for arithmetic operations
+- **Resources**: `status://health` for server health information
+- **Prompts**: `greet_user(name, style)` for customizable greetings
 
-### 2. **Resources** - Data Endpoints
-- `status://health`: Provides server health and status information
-- Resources offer structured data access for AI clients
+### 🆕 **Practical Demo Server (`practical_mcp_demo/`)**
+Complete hands-on implementation with:
 
-### 3. **Prompts** - Reusable Templates
-- `greet_user(name, style)`: Creates customizable greeting templates
-- Supports multiple styles: friendly, formal, casual
-- Helps AI models generate consistent, contextual responses
+#### **4 Advanced Tools**
+- `calculate` - Full arithmetic operations (add, subtract, multiply, divide)
+- `text_transform` - Text manipulation (upper, lower, reverse, count_words, title)
+- `manage_counter` - Interactive counter management (increment, decrement, reset)
+- `file_info` - File system information and analysis
+
+#### **2 Live Resources**
+- `status://server` - Real-time server status and statistics
+- `data://users` - Demo user database with sample data
+
+#### **2 AI Prompts**
+- `generate_code` - Intelligent code generation templates
+- `email_template` - Professional email template generation
+
+#### **Complete Test Suite**
+- Full client implementation demonstrating all server features
+- Practical examples of MCP protocol communication
+- Ready-to-run test scenarios
 
 ## 📋 Prerequisites
 
@@ -69,19 +90,36 @@ pip install -r requirements.txt  # if available
 
 ## 🚀 Usage
 
-### Running the MCP Server
+### Quick Start with Practical Demo
 
-To start the MCP server in development mode:
+For immediate hands-on experience:
 
 ```bash
-# Navigate to the project directory
-cd MCP_Learn
+# Navigate to the practical demo
+cd practical_mcp_demo
 
-# Run the server in development mode
+# Quick test of all features
+python run_demo.py
+
+# Full client-server test suite
+python client/test_client.py
+```
+
+### Running MCP Servers
+
+#### Basic Server
+```bash
+# Run the basic server
 mcp dev MCP_Servers/test.py
 ```
 
-The server will start and listen for MCP protocol communications over stdio, making it ready to integrate with MCP clients.
+#### Advanced Demo Server
+```bash
+# Run the practical demo server
+mcp dev practical_mcp_demo/server/demo_server.py
+```
+
+Both servers will listen for MCP protocol communications over stdio, ready to integrate with MCP clients.
 
 ### Running the Main Application
 
@@ -106,14 +144,25 @@ This MCP server can be integrated with AI clients like:
 
 ### Example Claude Desktop Configuration
 
-Add to your Claude Desktop configuration:
-
+#### Basic Server
 ```json
 {
   "mcpServers": {
-    "mcp-learn": {
+    "mcp-learn-basic": {
       "command": "python",
       "args": ["path/to/MCP_Learn/MCP_Servers/test.py"]
+    }
+  }
+}
+```
+
+#### 🆕 **Practical Demo Server (Recommended)**
+```json
+{
+  "mcpServers": {
+    "mcp-learn-demo": {
+      "command": "python",
+      "args": ["path/to/MCP_Learn/practical_mcp_demo/server/demo_server.py"]
     }
   }
 }

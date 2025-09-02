@@ -52,3 +52,4 @@ When developing MCP servers:
 - Use `@mcp.resource("uri://path")` for data endpoints
 - Use `@mcp.prompt()` for reusable AI templates
 - Always call `mcp.run_stdio()` in the `if __name__ == "__main__"` block for proper protocol negotiation
+- Stage and commit changes with descriptive message/comment
