@@ -1,22 +1,20 @@
 services:
   web:
     image: nginx
-    depends_on:
-      - db
-      - api
+    networks:
+      - frontend
   api:
     build: .
-    depends_on:
-      db:
-        condition: service_healthy
-  db: 
+    networks:
+      - frontend
+      - backend
+  db:
     image: postgres:13
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 60s
+    networks:
+      - backend
+neworks:
+  frondend:
+  backend:
     
     
 
