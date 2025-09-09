@@ -1,18 +1,13 @@
 services:
-  db:
-   image: postgres:13
-   volumes:
-     - db_data:/var/lib/postgresql/data
-  web:
-    image: nginx
-    volumes:
-      - ./html:/usr/share/nginx/html:ro
   app:
+    image: node:16
+    working_dir: /app
+    command: ["npm","run","dev"]
+  worker:
     build: .
-    volumes:
-      - .:/app
-      - /app/node_modules
-  volumes:
-    db_data:
-      
+    working_dir: ./app
+    command: python worker.py
+
+
+  
     
